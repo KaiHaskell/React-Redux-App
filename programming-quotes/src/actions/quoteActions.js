@@ -10,7 +10,7 @@ export const getQuote = () => dispatch => {
     .get("https://programming-quotes-api.herokuapp.com/quotes/random")
     .then(res => {
       console.log(res.data);
-      dispatch({ type: FETCH_JOKE_SUCCESS, payload: res.data });
+      dispatch({ type: FETCH_QUOTE_SUCCESS, payload: res.data });
     })
     .catch(err => {
       dispatch({ type: FETCH_QUOTE_FAILURE, payload: err.response });

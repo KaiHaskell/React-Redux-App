@@ -7,16 +7,18 @@ const Quote = props => {
   console.log(props);
   return (
     <div>
-      {!props.en && !props.isFetching && (
-        <h1>Programming quotes, for inspiration && procrastination.</h1>
-      )}
-      {props.isFetching && (
-        <Loader type="Puff" color="#00BFFF" height={100} width={100} />
-      )}
-      {props.joke && <p>{props.joke.joke}</p>}
-      <button onClick={props.getJoke}>Get Chucked!</button>
+      {props.quote && <p>{props.quote.en}</p>}
+      <i onClick={props.getQuote} class="fas fa-angle-double-left"></i>
     </div>
   );
 };
 
-export default connect(mapStateToProps, { getQuote }(Quote));
+const mapStateToProps = state => {
+  return {
+    quote: state.quote,
+    isFetching: state.isFetching,
+    error: state.error
+  };
+};
+
+export default connect(mapStateToProps, { getQuote })(Quote);
